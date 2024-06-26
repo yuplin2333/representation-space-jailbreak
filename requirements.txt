@@ -1,0 +1,22 @@
+matplotlib==3.8.3
+numpy==1.26.4
+pandas==2.2.0
+scikit_learn==1.4.1.post1
+torch==2.2.0
+tqdm==4.66.2
+transformers==4.39.1
+
+# for device_map="auto"
+accelerate==0.27.2
+
+# for vicuna
+protobuf==4.25.3
+sentencepiece==0.2.0
+
+# for semantic similarity
+sentence_transformers==2.6.1
+
+# for transfer attack on openai gpt
+openai==1.14.3
+
+# Beside the above, you also need to manually install flash-attn
