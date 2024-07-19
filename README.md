@@ -63,7 +63,7 @@ If you are using SLURM to submit jobs, modify `./sbatch_direct_submit_{EXPERIMEN
 
 - **Visualization** (Section 3)
 
-  After you obtained jailbreak results by running the main experiment, use `./tools/extract_visualization_from_result.ipynb` to generate visualization datasets from you result. Modify the filepaths inside.
+  After you obtained jailbreak results by running the main experiment, use `./tools/extract_visualization_from_result.ipynb` to generate visualization datasets from your results. Modify the filepaths in the jupyter notebook.
 
   Run `./scripts/visualize_anchored.sh`. Modify the parameters in the scripts to your need.
 
