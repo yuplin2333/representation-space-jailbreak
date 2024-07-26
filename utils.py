@@ -29,18 +29,26 @@ def set_seed(seed):
 
 
 def load_model_and_tokenizer(model_name):
-    # if torch.cuda.is_bf16_supported():
+    is_higher_than_ampere = torch.cuda.is_bf16_supported()
     try:
+        import flash_attn
+
+        is_flash_attn_available = True
+    except:
+        is_flash_attn_available = False
+
+    # Even flash_attn is installed, if <= Ampere, flash_attn will not work
+    if is_higher_than_ampere and is_flash_attn_available:
         model = AutoModelForCausalLM.from_pretrained(
             model_name,
             device_map="auto",
             low_cpu_mem_usage=True,
-            torch_dtype=torch.float16,
+            torch_dtype=torch.float16,  # NumPy doesn't support BF16
             attn_implementation="flash_attention_2",
             trust_remote_code=True,
         )
         print("Using FP16 and Flash-Attention 2...")
-    except:
+    else:
         model = AutoModelForCausalLM.from_pretrained(
             model_name,
             device_map="auto",
